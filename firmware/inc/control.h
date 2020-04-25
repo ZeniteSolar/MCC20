@@ -2,10 +2,11 @@
 #define _CONTROL_H
 
 #define MIN_D  0.01f
+#define MAX_D  0.98f
 
 #define D_STEP_SWAP 0.01f
 
-volatile float p,D,D_MaximumPower,p_MaximumPower;
+volatile double p,D,D_MaximumPower,p_MaximumPower;
 volatile unsigned char swap_complete;
 
 void mppt_machine(void);
