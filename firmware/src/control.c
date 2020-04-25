@@ -64,15 +64,20 @@ void mppt_limit(void)
 
 void search_MaximumPoint(void)
 {
-    static char d_step_swap = D_STEP_SWAP;
+    static float d_step_swap = D_STEP_SWAP;
     printf("swappp");
     if(p>p_MaximumPower){
         p_MaximumPower = p;
         D_MaximumPower = D;
     }
     D+=d_step_swap;
-    if(D>=1) d_step_swap = -d_step_swap;
+    printf("D%fD_step%f",D,d_step_swap);
+    if(D>=1){
+        D=1;
+        d_step_swap = -d_step_swap;
+    }
     if(D<=MIN_D){
+        D=MIN_D;
     swap_complete = 1;
     d_step_swap = D_STEP_SWAP;
     }

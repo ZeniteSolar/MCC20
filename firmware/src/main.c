@@ -20,7 +20,8 @@ static int D_fake_adc;
 
     D_fake_adc = D*160;
     p=power_dt[D_fake_adc];
-    printf("p:%f|D:%f\n",p,D);
+    printf("p:%f|D:%fi|p_max:%f|D:%f\n",p,D,p_MaximumPower,D_MaximumPower);
+
     }
 
 
