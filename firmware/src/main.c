@@ -13,7 +13,7 @@ int main(void)
 static int i;
 static int D_fake_adc;
 
-    MPPT_STATE = INIT;
+    set_mppt_initializing();
     for(i=INITIAL_ITERATION;i<FINAL_ITERATION;i++)
     {
     mppt_machine();

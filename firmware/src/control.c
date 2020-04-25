@@ -5,7 +5,8 @@
 void set_mppt_initializing(void)
 {
     printf("initializing");
-    D=MIN_D
+    swap_complete = 0;
+    D=MIN_D;
     MPPT_STATE = INIT;
 }
 
@@ -35,6 +36,11 @@ void mppt_initializing(void)
     printf("initializing");
     search_MaximumPoint();
 
+    if(swap_complete)
+    {
+        set_mppt_running();
+    }
+
 }
 
 void mppt_running(void)
@@ -58,13 +64,18 @@ void mppt_limit(void)
 
 void search_MaximumPoint(void)
 {
+    static char d_step_swap = D_STEP_SWAP;
+    printf("swappp");
     if(p>p_MaximumPower){
         p_MaximumPower = p;
-        D_maximumPower = D;
-
+        D_MaximumPower = D;
     }
-
-
+    D+=d_step_swap;
+    if(D>=1) d_step_swap = -d_step_swap;
+    if(D<=MIN_D){
+    swap_complete = 1;
+    d_step_swap = D_STEP_SWAP;
+    }
 
 }
 

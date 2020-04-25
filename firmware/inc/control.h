@@ -3,9 +3,10 @@
 
 #define MIN_D  0.01f
 
-#define d_step_swap 0.01f
+#define D_STEP_SWAP 0.01f
 
 volatile float p,D,D_MaximumPower,p_MaximumPower;
+volatile unsigned char swap_complete;
 
 void mppt_machine(void);
 
@@ -14,6 +15,8 @@ void mppt_running(void);
 void mppt_soft(void);
 void mppt_limit(void);
 
+
+void search_MaximumPoint(void);
 
 void set_mppt_initializing(void);
 void set_mppt_running(void);
