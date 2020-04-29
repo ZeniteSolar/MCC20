@@ -1,11 +1,22 @@
 #ifndef _CONTROL_H
 #define _CONTROL_H
 
+
+#define P_MIN  3.0f
+#define P_MAX  200.0f
+
 #define D_MIN  0.01f
 #define D_MAX  0.98f
 
-#define D_STEP_SWAP 0.01f
-#define D_STEP_SOFT 0.05f
+#define D_STEP_SWAP 0.1f
+#define D_STEP_SOFT 0.1f
+#define D_STEP_MPPT 0.01f
+#define D_STEP_LIMIT 0.02f
+
+#define CLK_SWAP 1
+#define CLK_SOFT 1
+#define CLK_MPPT 10
+#define CLK_LIMIT 3
 
 double mppt(double Vpv,double Ipv);
 void mppt_machine(void);
@@ -16,8 +27,9 @@ void mppt_soft(void);
 void mppt_limit(void);
 
 
-void search_MaximumPoint(void);
+void swap(void);
 void peo(void);
+void limit_p(void);
 
 void set_mppt_initializing(void);
 void set_mppt_running(void);

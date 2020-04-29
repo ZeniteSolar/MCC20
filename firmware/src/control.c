@@ -9,14 +9,15 @@ double mppt(double Vpv, double Ipv)
     p = Vpv * Ipv;
     mppt_machine();
 
-    
-    printf("p:%f | D:%fi | p_max:%f | D_max:%f\n", p, D, p_MaximumPower, D_MaximumPower); 
+    if(D>D_MAX) D = D_MAX;
+    if(D<D_MIN) D = D_MIN;
     return D;
 }
 
 void set_mppt_initializing(void)
 {
-    printf("initializing");
+    p_MaximumPower = 0;
+    D_MaximumPower = 0;
     swap_complete = 0;
     D = D_MIN;
     D_MaximumPower = 0;
@@ -25,56 +26,39 @@ void set_mppt_initializing(void)
 
 void set_mppt_running(void)
 {
-    printf("running");
     MPPT_STATE = RUNNING;
 }
 
 void set_mppt_soft(float target)
 {
-    D = D_MIN;
     D_target = target;
-    printf("soft");
     MPPT_STATE = SOFT;
 }
 
 void set_mppt_limit(void)
 {
-    printf("limiting");
     MPPT_STATE = LIMIT;
 }
-
+/* ########################################
+ * INIT initializing
+   ########################################
+ */
 void mppt_initializing(void)
 {
-    printf("initializing");
-    search_MaximumPoint();
+    static unsigned int clk_swap;
+    if(++clk_swap>CLK_SWAP){
+    clk_swap = 0;
+    swap();
+    }
 
     if (swap_complete) {
         set_mppt_soft(D_MaximumPower);
     }
 }
 
-void mppt_running(void) { printf("running"); }
-
-void mppt_soft(void) {
-    static float d_step_soft;
-
-    printf("soft \n%f\n",d_step_soft);
-    d_step_soft =D_STEP_SOFT * ((D_target-D)/(fabs(D_target-D)));
-    
-    if(fabs(D_target-D)>D_STEP_SOFT)  
-        D += d_step_soft;
-    else
-        set_mppt_running();
-
-    
-}
-
-void mppt_limit(void) { printf("limiting"); }
-
-void search_MaximumPoint(void)
+void swap(void)
 {
     static float d_step_swap = D_STEP_SWAP;
-    printf("swap: -->");
     if (p > p_MaximumPower) {
         p_MaximumPower = p;
         D_MaximumPower = D;
@@ -82,14 +66,103 @@ void search_MaximumPoint(void)
     D += d_step_swap;
     if (D >= D_MAX) {
         D = D_MAX;
-        d_step_swap = -d_step_swap;
-    }
-    if (D <= D_MIN) {
-        D = D_MIN;
         swap_complete = 1;
-        d_step_swap = D_STEP_SWAP;
     }
 }
+
+/* ########################################
+ * END initializing
+   ########################################
+ */
+
+/* ########################################
+ * INIT soft
+   ########################################
+ */
+
+void mppt_soft(void) {
+    static float d_step_soft;
+    static unsigned int clk_soft;
+
+    d_step_soft =D_STEP_SOFT * ((D_target-D)/(fabs(D_target-D)));
+    
+    if(fabs(D_target-D)>D_STEP_SOFT){  
+        if(++clk_soft>CLK_SOFT){
+            clk_soft = 0;
+            D += d_step_soft;
+        }
+    }
+    else
+        set_mppt_running();
+
+    
+}
+/* ########################################
+ * END soft
+   ########################################
+ */
+
+
+/* ########################################
+  INIT running
+   ########################################
+ */
+void mppt_running(void) {
+    static unsigned int peo_clk;
+    if(++peo_clk >= CLK_MPPT){
+        peo_clk = 0;
+        peo();
+    }
+
+    if(p<P_MIN){
+        set_mppt_initializing();
+    }
+    if(p>P_MAX){
+        set_mppt_limit();
+    }
+
+
+}
+
+void peo(void)
+{
+    static double p_;
+    static double d_step_mppt = D_STEP_MPPT;
+    if(p<p_) d_step_mppt = -d_step_mppt;
+    D += d_step_mppt;
+    p_ = p;
+}
+
+
+/* ########################################
+ * END running
+   ########################################
+ */
+
+void mppt_limit(void) {
+    static double d_step_limit = D_STEP_LIMIT;
+    static unsigned int clk_limit;
+    if(p<P_MAX){
+        set_mppt_running();
+    }
+    else{
+        if(++clk_limit>CLK_LIMIT){
+            clk_limit = 0;
+            limit_p();
+        }
+    }
+}
+
+void limit_p(void)
+{
+    static double p_ = 300;
+    static double d_step_limit = D_STEP_LIMIT;
+
+    if(p>p_) d_step_limit = -d_step_limit;
+        D += d_step_limit;    
+    p_=p;
+}
+
 
 void mppt_machine()
 {
