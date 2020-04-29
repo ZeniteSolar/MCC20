@@ -3,7 +3,7 @@
 
 
 #define P_MIN  3.0f
-#define P_MAX  200.0f
+#define P_MAX  400.0f
 
 #define D_MIN  0.01f
 #define D_MAX  0.98f
