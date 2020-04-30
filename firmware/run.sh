@@ -7,7 +7,7 @@
 \mkdir -p bin
 
 # Build
-gcc src/*.c -I inc/ -o bin/out.o &&
+gcc -Wall -O0 src/*.c -I inc/ -o bin/main &&
 
 # Run    
-./bin/out.o
+./bin/main
