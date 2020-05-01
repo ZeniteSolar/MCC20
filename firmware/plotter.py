@@ -1,23 +1,17 @@
 #!/bin/python3
 
 import socket
-from time import sleep
 import numpy as np
 from collections import deque
-
-simulation_output_socket = "simulation_output_socket"
-
-import time
-from collections import deque
-
 import matplotlib
 matplotlib.use('Qt5Cairo')
 import matplotlib.pyplot as plt
 plt.style.use('Solarize_Light2')
 import matplotlib.animation as animation
 
-
-start = time.time()
+# Configurations
+simulation_output_socket = "simulation_output_socket"
+verbose = False
 
 # ref: https://gist.github.com/Uberi/283a13b8a71a46fb4dc8
 class RealtimePlot:
@@ -89,7 +83,10 @@ def main():
                 for char in fp.readline():
                     line += char
                     data = np.fromstring(line, dtype=float, sep=',\n')
-                print("data:", data)
+
+                # Report to stdout
+                if verbose:
+                    print("data:", data)
 
                 # Separate data
                 time = data[0]
