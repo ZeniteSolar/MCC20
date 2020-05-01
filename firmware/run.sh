@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Clean
-\rm -rf bin
+\rm -rf bin *_socket
 
 # Prepare
 \mkdir -p bin
