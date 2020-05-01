@@ -6,6 +6,7 @@
 #include "control.h"
 #include "solvers.h"
 #include "panel_model.h"
+#include "socket.h"
 
 
 static inline double fun_circuit(double x, const double *params)
@@ -41,6 +42,13 @@ int main(void)
   double Rl = 5;
   const double *params[] = {&Ro, &Ipv};
   
+  // Socket configuration
+  const char *simulation_output_socket = "simulation_output_socket";
+  create_socket(simulation_output_socket);
+  const unsigned int simulation_output_data_length = 5;
+  const double *simulation_output_data[] = {&time, &Ro, &Vpv, &Ipv, &D};
+
+  // Controller configuration
   set_mppt_initializing();
 
   printf("|-------------------------------------------------------------------|\n");
@@ -59,6 +67,9 @@ int main(void)
     // other than f=1/delta_time.
     printf("|%- 10.6f|%- 8.3f|%- 8.3f|%- 8.3f|%- 8.3f|%- 8.3f|%- 8.3f|%-4d|\n", 
             time, Ro, Ipv, Vpv, Vpv / Ipv, Vpv * Ipv ,D ,MPPT_STATE);
+    send_to_socket(simulation_output_socket,
+                   *simulation_output_data,
+                   simulation_output_data_length);
 
     // CIRCUIT PERTURBATION
     // Note: maybe it needs a clock divider to run in a different frequency
@@ -67,9 +78,10 @@ int main(void)
     D = mppt(Vpv, Ipv); // mppt perturbation
     M = D/(1.0-D);
     Ro = Rl/(M*M);
-    if(time >= 0.002){
+    if (time >= 0.002) {
         Rl = 100;
     }
+
     time += delta_time;
   } while (time < end_time);
   printf("|------------------------------------------------------------------------|\n");

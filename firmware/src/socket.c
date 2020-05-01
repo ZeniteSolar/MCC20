@@ -8,13 +8,39 @@
 #include <string.h>         // for strcat, strlen, 
 #include <stdlib.h>         // for exit
 
+#include <signal.h>         // for sigaction
+#include <err.h>			// for err
+
 static int listen_socket_fd = -1;
 static int client_socket_fd = -1;
 
 // refs: https://linux.die.net/man/7/unix
+// https://www.gnu.org/software/libc/manual/html_node/Sigaction-Function-Example.html
  
+static void
+sigpipe_handler(int signum)
+{
+    printf("SIGPIPE received! Client disconnected!\n");
+    client_socket_fd = -1;
+}
 
-int create_socket(const char *socket_path)
+
+static void
+_sigpipe_config(void)
+{
+    struct sigaction act;
+    memset(&act, 0, sizeof(act));
+    act.sa_handler = sigpipe_handler;//SIG_IGN;
+    act.sa_flags = SA_RESTART;
+
+    int result = sigaction(SIGPIPE, &act, NULL);
+    if (result != 0)
+        err(1, "sigaction");
+}
+
+
+int
+create_socket(const char *socket_path)
 {
     // Create socket
     listen_socket_fd = socket(AF_UNIX, SOCK_STREAM | SOCK_NONBLOCK, 0);
@@ -44,6 +70,9 @@ int create_socket(const char *socket_path)
         return ret;
     }
 
+	// Configure SIGPIPE signal
+    _sigpipe_config();
+
     return 0;
 }
 
@@ -58,7 +87,7 @@ int send_to_socket(const char *socket_path,
     // Computes the total lenght for string: (data + "\n\0")
     ssize_t str_length = (format_length * data_length) +2;
     char str[str_length];
-    memset(str, str_length, 0);
+    memset(str, 0, str_length);
 
     // Writes each data to string
     int ret = 0;
@@ -77,7 +106,8 @@ int send_to_socket(const char *socket_path,
     }
 
     // Writes string into socket
-    ret = send(client_socket_fd, str, strlen(str), 0);
+    if (client_socket_fd != -1)
+        ret = send(client_socket_fd, str, strlen(str), 0);
 
     return ret;
 }
