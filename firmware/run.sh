@@ -32,7 +32,7 @@ FLAGS="
     -fstrict-aliasing \
     -Wstrict-overflow=5 -fstrict-overflow
 "
-gcc ${FLAGS} -Iinc/ src/*.c -obin/main
+gcc ${FLAGS} -Iinc/ src/*.c -obin/main &&
 
 # Run    
 ./bin/main.o
