@@ -7,7 +7,34 @@
 \mkdir -p bin
 
 # Build
-gcc -Wall -O0 src/*.c -I inc/ -o bin/main &&
 
-# Run    
-./bin/main
+FLAGS="
+    -std=gnu99 -O2 \
+    -pedantic -Wall -Wextra \
+    -Wconversion \
+    -Wshadow \
+    -Wunsafe-loop-optimizations \
+    -Waddress \
+    -Wlogical-op \
+    -Wstrict-prototypes \
+    -Wold-style-definition \
+    -Wmissing-prototypes \
+    -Wmissing-declarations \
+    -Wpacked \
+    -Wundef \
+    -Wredundant-decls \
+    -Wnested-externs \
+    -Wunreachable-code \
+    -Winline \
+    -Woverlength-strings \
+    -Wpointer-sign \
+    -Wdisabled-optimization \
+    -Wvariadic-macros \
+    -fstrict-aliasing \
+    -Wstrict-overflow=5 -fstrict-overflow
+"
+    
+gcc ${FLAGS} -Iinc/ src/*.c -obin/main
+
+#./bin/main
+
