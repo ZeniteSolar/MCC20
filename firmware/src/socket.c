@@ -8,6 +8,7 @@
 #include <string.h>         // for strcat, strlen, 
 #include <stdlib.h>         // for exit
 
+#define _USE_GNU
 #include <signal.h>         // for sigaction
 #include <err.h>			// for err
 
@@ -20,6 +21,7 @@ static int client_socket_fd = -1;
 static void
 sigpipe_handler(int signum)
 {
+    (void)signum;
     printf("SIGPIPE received! Client disconnected!\n");
     client_socket_fd = -1;
 }
@@ -33,7 +35,7 @@ _sigpipe_config(void)
     act.sa_handler = sigpipe_handler;//SIG_IGN;
     act.sa_flags = SA_RESTART;
 
-    int result = sigaction(SIGPIPE, &act, NULL);
+    ssize_t result = sigaction(SIGPIPE, &act, NULL);
     if (result != 0)
         err(1, "sigaction");
 }
@@ -80,17 +82,17 @@ int send_to_socket(const char *socket_path,
                    const double *data[], 
                    unsigned int data_length)
 {
+    (void)socket_path;
     // Defines each data format to be written in fifo
     const char format[] = "%09.6f,"; 
-    const char format_length = 15;  // "999.999999," = 15 chars 
+    const unsigned int format_length = 15;  // "999.999999," = 15 chars 
 
     // Computes the total lenght for string: (data + "\n\0")
-    ssize_t str_length = (format_length * data_length) +2;
+    unsigned int str_length = (format_length * data_length) +2;
     char str[str_length];
     memset(str, 0, str_length);
 
     // Writes each data to string
-    int ret = 0;
     char data_str[format_length];
     for (unsigned int i = 0; i < data_length; i++)
     {
@@ -100,6 +102,7 @@ int send_to_socket(const char *socket_path,
     strcat(str, "\n");
 
     // Opens client socket
+    int ret = 0;
     if (client_socket_fd == -1) {
         ret = client_socket_fd = accept(listen_socket_fd, NULL, NULL);
         if (ret == -1) return ret;
@@ -107,7 +110,7 @@ int send_to_socket(const char *socket_path,
 
     // Writes string into socket
     if (client_socket_fd != -1)
-        ret = send(client_socket_fd, str, strlen(str), 0);
+        ret = (int)send(client_socket_fd, str, strlen(str), 0);
 
     return ret;
 }
