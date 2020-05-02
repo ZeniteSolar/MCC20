@@ -2,20 +2,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "main.h"
 #include "control.h"
 #include "solvers.h"
 #include "panel_model.h"
 #include "socket.h"
 
 
-static inline double fun_circuit(double x, const double *params)
+static inline double fun_circuit(double x, const double *params[])
 {
   double Vpv, Ipv, Ro;
 
-  Ro = params[0];
-  Ipv = panel_model(x,params);
   Vpv = x;
+  Ro = *params[0];
+  Ipv = panel_model(Vpv,params);
 
   double F = Ipv * Ro - Vpv;
 
@@ -63,8 +62,8 @@ int main(void)
   printf("`----------------------------------------------------------------------´\n");
   do {
     // CIRCUIT SIMULATION
-    ret |= bisect_solver(&Vpv, *params, fun_circuit, xmin, xmax, tol, maxiter);
-    Ipv = panel_model(Vpv,* params);
+    ret |= bisect_solver(&Vpv, params, fun_circuit, xmin, xmax, tol, maxiter);
+    Ipv = panel_model(Vpv, params);
 
     if (ret != 0) break; // not converged
 
@@ -74,7 +73,7 @@ int main(void)
     printf("|%- 10.6f|%- 8.3f|%- 8.3f|%- 8.3f|%- 8.3f|%- 8.3f|%- 8.3f|%-4d|\n", 
             time, Ro, Ipv, Vpv, Vpv / Ipv, Vpv * Ipv ,D ,MPPT_STATE);
     send_to_socket(simulation_output_socket,
-                   *simulation_output_data,
+                   simulation_output_data,
                    simulation_output_data_length);
 
     // CIRCUIT PERTURBATION

@@ -1,15 +1,15 @@
 #include "panel_model.h"
 
-double panel_model(double Vpv,const double * params)
+double panel_model(double Vpv,const double * params[])
 {
   double Voc;
   double Isc;
   double G;
   double Ipv;
 
-  Voc = params[4];
-  Isc = params[5];
-  G = params[6];
+  Voc = *params[2];
+  Isc = *params[3];
+  G = *params[4];
 
   if (Vpv >= Voc)
     Ipv = 0;
