@@ -77,7 +77,7 @@ create_socket(const char *socket_path)
 }
 
 int send_to_socket(const char *socket_path, 
-                   const double *data, 
+                   const double *data[], 
                    unsigned int data_length)
 {
     // Defines each data format to be written in fifo
@@ -94,7 +94,7 @@ int send_to_socket(const char *socket_path,
     char data_str[format_length];
     for (unsigned int i = 0; i < data_length; i++)
     {
-        snprintf(data_str, format_length, format, data[i]);
+        snprintf(data_str, format_length, format, *data[i]);
         strcat(str, data_str);
     }
     strcat(str, "\n");

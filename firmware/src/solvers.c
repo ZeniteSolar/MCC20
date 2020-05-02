@@ -12,11 +12,11 @@ static inline void _bisect_iteration(double *x, double xmin, double xmax,
   if (BISECT_VERBOSE) printf("  Iteration %3d ... x = %7.9f\n", *itr, *x);
 }
 
-int bisect_solver(double *x, const double *params,
-                  double (*fun)(double x, const double *params), double xmin,
+int bisect_solver(double *x, const double *params[],
+                  double (*fun)(double x, const double *params[]), double xmin,
                   double xmax, double tol, unsigned int maxiter) {
   unsigned int itr = 0;
-  double x1;
+  double x1 = 0;
 
   _bisect_iteration(x, xmin, xmax, &itr);
   do {
