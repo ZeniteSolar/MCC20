@@ -7,7 +7,6 @@
 \mkdir -p bin
 
 # Build
-
 FLAGS="
     -std=gnu99 -O2 \
     -pedantic -Wall -Wextra \
@@ -33,8 +32,7 @@ FLAGS="
     -fstrict-aliasing \
     -Wstrict-overflow=5 -fstrict-overflow
 "
-    
 gcc ${FLAGS} -Iinc/ src/*.c -obin/main
 
-#./bin/main
-
+# Run    
+./bin/main.o

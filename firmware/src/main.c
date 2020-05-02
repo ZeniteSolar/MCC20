@@ -14,7 +14,7 @@ static inline double fun_circuit(double x, const double *params[])
 
   Vpv = x;
   Ro = *params[0];
-  Ipv = panel_model(Vpv);
+  Ipv = panel_model(Vpv,params);
 
   double F = Ipv * Ro - Vpv;
 
@@ -25,7 +25,7 @@ static inline double fun_circuit(double x, const double *params[])
 int main(void)
 {
   // Simulation runtime configuration
-  const double end_time = 7e-3;
+  const double end_time = 700e-3;
   const double delta_time = 1.0e-5;
   double time = 0;
   int ret = 0;
@@ -39,7 +39,13 @@ int main(void)
   // Circuit configuration
   double Ro, Vpv, Ipv ,D ,M;
   double Rl = 5;
-  const double *params[] = {&Ro, &Ipv};
+
+  // Panel configuration
+  double Voc = 40;
+  double Isc = 8;
+  double G = 1000;
+
+  const double *params[] = {&Ro, &Ipv, &Voc, &Isc, &G};
   
   // Socket configuration
   const char *simulation_output_socket = "simulation_output_socket";
@@ -57,7 +63,7 @@ int main(void)
   do {
     // CIRCUIT SIMULATION
     ret |= bisect_solver(&Vpv, params, fun_circuit, xmin, xmax, tol, maxiter);
-    Ipv = panel_model(Vpv);
+    Ipv = panel_model(Vpv, params);
 
     if (ret != 0) break; // not converged
 
@@ -77,8 +83,11 @@ int main(void)
     D = mppt(Vpv, Ipv); // mppt perturbation
     M = D/(1.0-D);
     Ro = Rl/(M*M);
+    static float G_step = 0.1;
     if (time >= 0.002) {
-        Rl = 100;
+        G -= G_step;
+        if(G <= 30) G_step = -G_step;
+        if(G>1000) G_step = -G_step;
     }
 
     time += delta_time;
