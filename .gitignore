@@ -1,3 +1,5 @@
+firmware/bin/
+firmware/.ropeproject/
 # Prerequisites
 *.d
 

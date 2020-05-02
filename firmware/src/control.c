@@ -29,7 +29,7 @@ void set_mppt_running(void)
     MPPT_STATE = RUNNING;
 }
 
-void set_mppt_soft(float target)
+void set_mppt_soft(double target)
 {
     D_target = target;
     MPPT_STATE = SOFT;
@@ -81,7 +81,7 @@ void swap(void)
  */
 
 void mppt_soft(void) {
-    static float d_step_soft;
+    static double d_step_soft;
     static unsigned int clk_soft;
 
     d_step_soft =D_STEP_SOFT * ((D_target-D)/(fabs(D_target-D)));
@@ -140,7 +140,6 @@ void peo(void)
  */
 
 void mppt_limit(void) {
-    static double d_step_limit = D_STEP_LIMIT;
     static unsigned int clk_limit;
     if(p<P_MAX){
         set_mppt_running();
@@ -164,7 +163,7 @@ void limit_p(void)
 }
 
 
-void mppt_machine()
+void mppt_machine(void)
 {
     switch (MPPT_STATE) {
     case INIT:

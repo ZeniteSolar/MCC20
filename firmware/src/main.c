@@ -83,7 +83,7 @@ int main(void)
     D = mppt(Vpv, Ipv); // mppt perturbation
     M = D/(1.0-D);
     Ro = Rl/(M*M);
-    static float G_step = 0.1;
+    static double G_step = 0.1;
     if (time >= 0.002) {
         G -= G_step;
         if(G <= 30) G_step = -G_step;

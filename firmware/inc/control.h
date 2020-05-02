@@ -9,7 +9,7 @@
 #define D_MAX  0.98f
 
 #define D_STEP_SWAP 0.1f
-#define D_STEP_SOFT 0.1f
+#define D_STEP_SOFT 0.1
 #define D_STEP_MPPT 0.005f
 #define D_STEP_LIMIT 0.02f
 
@@ -33,7 +33,7 @@ void limit_p(void);
 
 void set_mppt_initializing(void);
 void set_mppt_running(void);
-void set_mppt_soft(float target);
+void set_mppt_soft(double target);
 void set_mppt_limit(void);
 
 

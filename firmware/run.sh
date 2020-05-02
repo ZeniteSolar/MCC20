@@ -35,4 +35,4 @@ FLAGS="
 gcc ${FLAGS} -Iinc/ src/*.c -obin/main &&
 
 # Run    
-./bin/main.o
+./bin/main
