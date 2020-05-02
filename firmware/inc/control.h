@@ -10,12 +10,12 @@
 
 #define D_STEP_SWAP 0.1f
 #define D_STEP_SOFT 0.1f
-#define D_STEP_MPPT 0.01f
+#define D_STEP_MPPT 0.005f
 #define D_STEP_LIMIT 0.02f
 
 #define CLK_SWAP 1
 #define CLK_SOFT 1
-#define CLK_MPPT 10
+#define CLK_MPPT 1
 #define CLK_LIMIT 3
 
 double mppt(double Vpv,double Ipv);
