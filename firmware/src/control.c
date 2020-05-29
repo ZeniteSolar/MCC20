@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 
+volatile unsigned char MPPT_STATE;
 static double p, D, D_MaximumPower, p_MaximumPower, D_target;
 static unsigned char swap_complete;
 double mppt(double Vpv, double Ipv)

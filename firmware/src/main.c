@@ -7,6 +7,7 @@
 #include "panel_model.h"
 #include "socket.h"
 
+extern unsigned char MPPT_STATE;
 
 static inline double fun_circuit(double x, const double *params[])
 {

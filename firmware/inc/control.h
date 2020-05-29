@@ -37,7 +37,6 @@ void set_mppt_soft(double target);
 void set_mppt_limit(void);
 
 
-volatile unsigned char MPPT_STATE ;
 enum{INIT,RUNNING,SOFT,LIMIT};
 
 //void set_MPPT_init(void);
