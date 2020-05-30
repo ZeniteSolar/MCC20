@@ -63,7 +63,7 @@ int main(void)
   printf("`----------------------------------------------------------------------´\n");
   do {
     // CIRCUIT SIMULATION
-    ret |= bisect_solver(&Vpv, params, fun_circuit, xmin, xmax, tol, maxiter);
+    ret |= regula_falsi_solver(&Vpv, params, fun_circuit, xmin, xmax, tol, maxiter);
     Ipv = panel_model(Vpv, params);
 
     if (ret != 0) break; // not converged
