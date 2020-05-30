@@ -6,31 +6,31 @@ INCDIR := inc
 BINDIR := bin
 TARGET = main
 
-CFLAGS := -Wall
-#    -std=gnu99 -O2 \
-#    -pedantic -Wall -Wextra \
-#    -Wconversion \
-#    -Wshadow \
-#    -Wunsafe-loop-optimizations \
-#    -Waddress \
-#    -Wlogical-op \
-#    -Wstrict-prototypes \
-#    -Wold-style-definition \
-#    -Wmissing-prototypes \
-#    -Wmissing-declarations \
-#    -Wpacked \
-#    -Wundef \
-#    -Wredundant-decls \
-#    -Wnested-externs \
-#    -Wunreachable-code \
-#    -Winline \
-#    -Woverlength-strings \
-#    -Wpointer-sign \
-#    -Wdisabled-optimization \
-#    -Wvariadic-macros \
-#    -fstrict-aliasing \
-#    -Wstrict-overflow=5 -fstrict-overflow
-LDFLAGS := -Wall
+CFLAGS := 
+	-std=gnu99 -O2 \
+    -pedantic -Wall -Wextra \
+    -Wconversion \
+    -Wshadow \
+    -Wunsafe-loop-optimizations \
+    -Waddress \
+    -Wlogical-op \
+    -Wstrict-prototypes \
+    -Wold-style-definition \
+    -Wmissing-prototypes \
+    -Wmissing-declarations \
+    -Wpacked \
+    -Wundef \
+    -Wredundant-decls \
+    -Wnested-externs \
+    -Wunreachable-code \
+    -Winline \
+    -Woverlength-strings \
+    -Wpointer-sign \
+    -Wdisabled-optimization \
+    -Wvariadic-macros \
+    -fstrict-aliasing \
+    -Wstrict-overflow=5 -fstrict-overflow
+LDFLAGS := 
 
 SRCS    =   $(shell find $(SRCDIR) -type f -name \*.c)
 OBJS    =   $(patsubst $(SRCDIR)/%,$(OBJDIR)/%,$(SRCS:.c=.o))
@@ -43,6 +43,8 @@ mkdirs:
 	\mkdir -p $(SRCDIR) $(OBJDIR) $(BINDIR)
 
 clean:
+	@echo "Cleaning..."
+	@echo ""
 	\rm -rf $(OBJDIR) $(BINDIR)
 
 .SECONDARY:
