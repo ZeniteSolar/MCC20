@@ -30,5 +30,18 @@ Este módulo é responsável por gerenciar o carregamento da bateria e a operaç
         - Utilizar frequencia que tenha uma boa relação entre perdas nas chaves e volume do onversor
     - Layout
         - Baixa indutancia no braço (entre chaves)
-4. Robustes
+        - Trilhas curtas
+    - Snubber
+        - Equilibrio entre sobre-tensão nas chaves e potencia dissipada
+4. Robustez
+    - Chaves em regime seguro
+        - Snubber
+        - Layout
+    - Proteção *under load* (nao implementado)
+    - Capacitores em regime seguro
+        - Tensao maxima >Vpan+Vbat
+    - Tolerancia termica
+        - Projetar assumindo que a temperatura ambiente é 50°
+    - Layout simples de montar por metodo artesanal (transferencia termica)
+
      
