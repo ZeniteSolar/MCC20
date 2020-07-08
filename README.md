@@ -9,7 +9,7 @@ Este módulo é responsável por gerenciar o carregamento da bateria e a operaç
 
 #### Requisitos e Abordagens
 1. Encontrar o ponto de maxima potencia (MPP) do painel solar
-    - Utilizar a tecnica p&o para achar o MPP
+    - Utilizar a tecnica perturbar e observar (p&o) para achar o MPP
     - Ao iniciar barrer o duty cicle para iniciar no MPP
     - Se a potencia for 0 fazer o barrido novamente 
 2. Medir a Potencia do painel
