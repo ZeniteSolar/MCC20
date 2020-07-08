@@ -30,4 +30,5 @@ Este módulo é responsável por gerenciar o carregamento da bateria e a operaç
         - Utilizar frequencia que tenha uma boa relação entre perdas nas chaves e volume do onversor
     - Layout
         - Baixa indutancia no braço (entre chaves)
-
+4. Robustes
+     
