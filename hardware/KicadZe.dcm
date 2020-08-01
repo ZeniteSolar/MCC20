@@ -1,0 +1,15 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP INA128
+D Precision, Low Power Instrumentation Amplifier G = 1 + 50kOhm/Rg, DIP-8/SOIC-8
+K instrumentation opamp
+F http://www.ti.com/lit/ds/symlink/ina128.pdf
+$ENDCMP
+#
+$CMP INA129
+D Precision, Low Power Instrumentation Amplifier G = 1 + 49.4kOhm/Rg, DIP-8/SOIC-8
+K instrumentation opamp
+F http://www.ti.com/lit/ds/symlink/ina128.pdf
+$ENDCMP
+#
+#End Doc Library

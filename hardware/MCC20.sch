@@ -1,0 +1,228 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 7
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCC20-rescue:MountingHole-Mechanical-basicsensormodule-rescue H104
+U 1 1 5BE9AF15
+P 5900 7700
+F 0 "H104" H 6000 7750 50  0000 L CNN
+F 1 "MountingHole" H 6000 7700 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5900 7700 50  0001 C CNN
+F 3 "~" H 5900 7700 50  0001 C CNN
+	1    5900 7700
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCC20-rescue:MountingHole-Mechanical-basicsensormodule-rescue H103
+U 1 1 5BE9BC53
+P 5900 7500
+F 0 "H103" H 6000 7550 50  0000 L CNN
+F 1 "MountingHole" H 6000 7500 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5900 7500 50  0001 C CNN
+F 3 "~" H 5900 7500 50  0001 C CNN
+	1    5900 7500
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCC20-rescue:MountingHole-Mechanical-basicsensormodule-rescue H102
+U 1 1 5BE9BC79
+P 5900 7300
+F 0 "H102" H 6000 7350 50  0000 L CNN
+F 1 "MountingHole" H 6000 7300 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5900 7300 50  0001 C CNN
+F 3 "~" H 5900 7300 50  0001 C CNN
+	1    5900 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCC20-rescue:MountingHole-Mechanical-basicsensormodule-rescue H101
+U 1 1 5BE9BC9F
+P 5900 7100
+F 0 "H101" H 6000 7150 50  0000 L CNN
+F 1 "MountingHole" H 6000 7100 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.2mm_M3" H 5900 7100 50  0001 C CNN
+F 3 "~" H 5900 7100 50  0001 C CNN
+	1    5900 7100
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 6600 5050 1350 1250
+U 5AABFC1B
+F0 "CANBUS" 60
+F1 "canbus.sch" 60
+F2 "SI" I L 6600 5350 60 
+F3 "SO" O L 6600 5250 60 
+F4 "CS" I L 6600 5450 60 
+F5 "SCK" I L 6600 5150 60 
+F6 "INT" O L 6600 5550 60 
+F7 "GND" O R 7950 5200 60 
+F8 "VCC" I R 7950 5100 60 
+F9 "CAN_H" B R 7950 5300 60 
+F10 "CAN_L" B R 7950 5400 60 
+$EndSheet
+$Sheet
+S 8300 4000 1050 500 
+U 5AACFFEF
+F0 "POWER SUPPLY" 60
+F1 "supplies.sch" 60
+F2 "GND" O R 9350 4300 60 
+F3 "+5V_OUT" O L 8300 4300 60 
+F4 "+18V_IN" I R 9350 4200 60 
+F5 "+18V_OUT" I L 8300 4200 60 
+F6 "+12V_OUT" I L 8300 4075 50 
+$EndSheet
+$Sheet
+S 9950 4150 600  450 
+U 5AAD16DD
+F0 "CANBUS CONN" 60
+F1 "canbus_connector.sch" 60
+F2 "CAN_H" B L 9950 4400 60 
+F3 "CAN_L" B L 9950 4500 60 
+F4 "CAN_18V" O L 9950 4200 60 
+F5 "CAN_GND" B L 9950 4300 60 
+$EndSheet
+Wire Wire Line
+	9950 4200 9350 4200
+Wire Wire Line
+	9350 4300 9550 4300
+Wire Wire Line
+	9950 4400 9650 4400
+Wire Wire Line
+	9650 4400 9650 5300
+Wire Wire Line
+	9650 5300 7950 5300
+Wire Wire Line
+	7950 5400 9750 5400
+Wire Wire Line
+	9750 5400 9750 4500
+Wire Wire Line
+	9750 4500 9950 4500
+Wire Wire Line
+	9550 4300 9550 5200
+Wire Wire Line
+	9550 5200 8150 5200
+Wire Wire Line
+	8300 4300 8100 4300
+Wire Wire Line
+	8100 4300 8100 4850
+Wire Wire Line
+	8100 5100 7950 5100
+Wire Wire Line
+	8150 5200 8150 5600
+Connection ~ 8150 5200
+Wire Wire Line
+	8150 5200 7950 5200
+Wire Wire Line
+	7950 4750 7950 4850
+Wire Wire Line
+	7950 4850 8100 4850
+Connection ~ 8100 4850
+Wire Wire Line
+	8100 4850 8100 5100
+Connection ~ 9550 4300
+Wire Wire Line
+	9550 4300 9950 4300
+$Comp
+L power:GND #PWR0103
+U 1 1 5BE8F87F
+P 8150 5600
+F 0 "#PWR0103" H 8150 5350 50  0001 C CNN
+F 1 "GND" H 8200 5400 50  0000 C CNN
+F 2 "" H 8150 5600 50  0001 C CNN
+F 3 "" H 8150 5600 50  0001 C CNN
+	1    8150 5600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0105
+U 1 1 5BE8FCAE
+P 7950 4750
+F 0 "#PWR0105" H 7950 4600 50  0001 C CNN
+F 1 "+5V" H 8000 4950 50  0000 C CNN
+F 2 "" H 7950 4750 50  0001 C CNN
+F 3 "" H 7950 4750 50  0001 C CNN
+	1    7950 4750
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 4900 4650 1150 1150
+U 5AACA401
+F0 "MCU" 60
+F1 "atmega328p.sch" 60
+F2 "SPI_MISO" I R 6050 5250 60 
+F3 "SPI_MOSI" O R 6050 5350 60 
+F4 "MCP_INT" I R 6050 5550 60 
+F5 "VCC" I L 4900 4950 60 
+F6 "GND" O L 4900 5150 60 
+F7 "SPI_SCK" O R 6050 5150 50 
+F8 "MCP_SS" O R 6050 5450 50 
+$EndSheet
+Wire Wire Line
+	6600 5550 6050 5550
+Wire Wire Line
+	6600 5450 6050 5450
+Wire Wire Line
+	6600 5250 6050 5250
+Wire Wire Line
+	6600 5150 6050 5150
+Wire Wire Line
+	6050 5350 6600 5350
+Text Label 6200 5350 0    60   ~ 0
+MOSI
+Text Label 6200 5250 0    60   ~ 0
+MISO
+Text Label 6200 5150 0    60   ~ 0
+SCK
+$Comp
+L power:+5V #PWR0102
+U 1 1 5CB14A9F
+P 4725 4925
+F 0 "#PWR0102" H 4725 4775 50  0001 C CNN
+F 1 "+5V" H 4775 5125 50  0000 C CNN
+F 2 "" H 4725 4925 50  0001 C CNN
+F 3 "" H 4725 4925 50  0001 C CNN
+	1    4725 4925
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0106
+U 1 1 5CB14AC2
+P 4775 5150
+F 0 "#PWR0106" H 4775 4900 50  0001 C CNN
+F 1 "GND" H 4825 5000 50  0000 C CNN
+F 2 "" H 4775 5150 50  0001 C CNN
+F 3 "" H 4775 5150 50  0001 C CNN
+	1    4775 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4775 5150 4900 5150
+Wire Wire Line
+	4900 4950 4725 4950
+Wire Wire Line
+	4725 4950 4725 4925
+$Sheet
+S 2875 2175 1275 1025
+U 5F260F1C
+F0 "signals" 50
+F1 "signals.sch" 50
+$EndSheet
+$Sheet
+S 5050 2150 1450 1100
+U 5F261197
+F0 "Sheet5F261196" 50
+F1 "cuk.sch" 50
+$EndSheet
+$EndSCHEMATC
