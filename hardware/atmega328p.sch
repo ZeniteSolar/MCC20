@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 7
+Sheet 4 8
 Title ""
 Date ""
 Rev ""
@@ -569,7 +569,6 @@ Wire Wire Line
 	3650 3050 3650 3150
 Wire Wire Line
 	5050 2950 4950 2950
-NoConn ~ 5050 2950
 Text Label 5300 2850 0    60   ~ 0
 MCP_INT
 Text Label 5300 2750 0    60   ~ 0
@@ -641,4 +640,6 @@ Text HLabel 5050 3850 2    50   Output ~ 0
 V_Vbat_ADC
 Text HLabel 5050 3950 2    50   Output ~ 0
 V_Ibat_ADC
+Text HLabel 5050 2950 2    50   Output ~ 0
+PWM
 $EndSCHEMATC

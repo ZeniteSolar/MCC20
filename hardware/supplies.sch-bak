@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 7
+Sheet 2 8
 Title ""
 Date ""
 Rev ""
@@ -205,114 +205,6 @@ F 3 "~" H 5200 4900 50  0001 C CNN
 	1    5200 4900
 	-1   0    0    1   
 $EndComp
-$Comp
-L Regulator_Linear:LM7812_TO220 U301
-U 1 1 5F2DA6AE
-P 6000 6000
-F 0 "U301" H 6000 6242 50  0000 C CNN
-F 1 "LM7812_TO220" H 6000 6151 50  0000 C CNN
-F 2 "MCCplaca:TO-220-3_Horizontal_TabDown_SMD" H 6000 6225 50  0001 C CIN
-F 3 "" H 6000 5950 50  0001 C CNN
-	1    6000 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5F2DA6B5
-P 6000 6550
-AR Path="/5F261197/5F2DA6B5" Ref="#PWR?"  Part="1" 
-AR Path="/5AACFFEF/5F2DA6B5" Ref="#PWR0101"  Part="1" 
-F 0 "#PWR0101" H 6000 6300 50  0001 C CNN
-F 1 "GND" H 6005 6377 50  0000 C CNN
-F 2 "" H 6000 6550 50  0001 C CNN
-F 3 "" H 6000 6550 50  0001 C CNN
-	1    6000 6550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6000 6300 6000 6450
-$Comp
-L Device:C_Small C303
-U 1 1 5F2DA6BC
-P 6350 6250
-F 0 "C303" H 6442 6296 50  0000 L CNN
-F 1 "100nF" H 6442 6205 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6350 6250 50  0001 C CNN
-F 3 "" H 6350 6250 50  0001 C CNN
-	1    6350 6250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP1_Small C304
-U 1 1 5F2DA6C2
-P 6800 6250
-F 0 "C304" H 6891 6296 50  0000 L CNN
-F 1 "10uF" H 6891 6205 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6800 6250 50  0001 C CNN
-F 3 "" H 6800 6250 50  0001 C CNN
-	1    6800 6250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:CP1_Small C301
-U 1 1 5F2DA6C8
-P 5250 6250
-F 0 "C301" H 5341 6296 50  0000 L CNN
-F 1 "10uF" H 5341 6205 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5250 6250 50  0001 C CNN
-F 3 "" H 5250 6250 50  0001 C CNN
-	1    5250 6250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C_Small C302
-U 1 1 5F2DA6CE
-P 5550 6250
-F 0 "C302" H 5642 6296 50  0000 L CNN
-F 1 "100nF" H 5642 6205 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 5550 6250 50  0001 C CNN
-F 3 "" H 5550 6250 50  0001 C CNN
-	1    5550 6250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	5250 6000 5250 6150
-Wire Wire Line
-	5550 6000 5550 6150
-Connection ~ 5550 6000
-Wire Wire Line
-	5550 6000 5700 6000
-Wire Wire Line
-	5250 6350 5250 6450
-Wire Wire Line
-	5250 6450 5550 6450
-Connection ~ 6000 6450
-Wire Wire Line
-	6000 6450 6000 6550
-Wire Wire Line
-	5550 6350 5550 6450
-Connection ~ 5550 6450
-Wire Wire Line
-	5550 6450 6000 6450
-Wire Wire Line
-	6350 6150 6350 6000
-Connection ~ 6350 6000
-Wire Wire Line
-	6350 6000 6300 6000
-Wire Wire Line
-	6800 6150 6800 6000
-Connection ~ 6800 6000
-Wire Wire Line
-	6800 6350 6800 6450
-Wire Wire Line
-	6800 6450 6350 6450
-Wire Wire Line
-	6350 6350 6350 6450
-Connection ~ 6350 6450
-Wire Wire Line
-	6350 6450 6000 6450
-Wire Wire Line
-	6350 6000 6800 6000
 Wire Wire Line
 	3250 5100 3550 5100
 $Comp
@@ -347,23 +239,10 @@ Wire Wire Line
 	5900 4950 5900 4800
 Text Label 3550 5100 0    50   ~ 0
 18V_fused
-Text Label 4650 6000 0    50   ~ 0
-18V_fused
-Wire Wire Line
-	4650 6000 5250 6000
-Connection ~ 5250 6000
-Wire Wire Line
-	5250 6000 5550 6000
 Text Label 4750 3950 0    50   ~ 0
 18V_fused
 Wire Wire Line
 	5200 3950 4750 3950
-Text HLabel 7050 5900 2    60   Input ~ 0
-+12V_OUT
 Wire Wire Line
 	5200 3950 5600 3950
-Wire Wire Line
-	6800 5900 6800 6000
-Wire Wire Line
-	6800 5900 7050 5900
 $EndSCHEMATC
