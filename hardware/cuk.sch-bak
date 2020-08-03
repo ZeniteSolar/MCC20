@@ -216,7 +216,7 @@ Wire Wire Line
 	9400 4125 9600 4125
 Wire Wire Line
 	9600 4125 10250 4125
-Text Label 7950 4550 1    25   ~ 0
+Text Label 8000 4525 0    25   ~ 0
 -P_unfused
 Text Label 7850 3500 1    50   ~ 0
 -Vp
@@ -577,12 +577,12 @@ $Comp
 L Device:L_Core_Iron_Small L2/701
 U 1 1 5B8A41FB
 P 5350 1650
-F 0 "L2/701" H 5600 1650 50  0000 R CNN
+F 0 "L2/701" V 5600 1650 50  0000 R CNN
 F 1 "L_Core_Iron_Small" H 5309 1695 50  0001 R CNN
 F 2 "KicadZeniteSolarLibrary18:Inductor_Nocoupled" H 5350 1650 50  0001 C CNN
 F 3 "~" H 5350 1650 50  0001 C CNN
 	1    5350 1650
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 Wire Wire Line
 	5050 1550 5050 1400

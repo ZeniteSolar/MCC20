@@ -26,20 +26,6 @@ F 3 "" H 5275 3300 50  0001 C CNN
 	1    5275 3350
 	1    0    0    -1  
 $EndComp
-$Comp
-L power:GND #PWR?
-U 1 1 5F3B8D9B
-P 5275 3900
-AR Path="/5F261197/5F3B8D9B" Ref="#PWR?"  Part="1" 
-AR Path="/5AACFFEF/5F3B8D9B" Ref="#PWR?"  Part="1" 
-AR Path="/5F3AA4D6/5F3B8D9B" Ref="#PWR0151"  Part="1" 
-F 0 "#PWR0151" H 5275 3650 50  0001 C CNN
-F 1 "GND" H 5280 3727 50  0000 C CNN
-F 2 "" H 5275 3900 50  0001 C CNN
-F 3 "" H 5275 3900 50  0001 C CNN
-	1    5275 3900
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5275 3650 5275 3800
 $Comp
@@ -106,8 +92,6 @@ Wire Wire Line
 Wire Wire Line
 	4525 3800 4825 3800
 Connection ~ 5275 3800
-Wire Wire Line
-	5275 3800 5275 3900
 Wire Wire Line
 	4825 3700 4825 3800
 Connection ~ 4825 3800
