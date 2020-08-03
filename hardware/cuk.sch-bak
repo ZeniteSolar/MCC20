@@ -255,7 +255,7 @@ U 1 1 5B4A6175
 P 8000 3900
 F 0 "Rshunt702" H 8070 3946 50  0000 L CNN
 F 1 "1500uR" H 8070 3855 50  0000 L CNN
-F 2 "Resistor_SMD:R_2512_6332Metric_Pad1.52x3.35mm_HandSolder" V 7930 3900 50  0001 C CNN
+F 2 "KicadZeniteSolarLibrary18:PML100HZPJV0L5" V 7930 3900 50  0001 C CNN
 F 3 "~" H 8000 3900 50  0001 C CNN
 	1    8000 3900
 	1    0    0    -1  
@@ -571,7 +571,7 @@ F 1 "L_Core_Iron_Small" H 5118 1605 50  0001 L CNN
 F 2 "KicadZeniteSolarLibrary18:Inductor_Nocoupled" H 5050 1650 50  0001 C CNN
 F 3 "~" H 5050 1650 50  0001 C CNN
 	1    5050 1650
-	-1   0    0    1   
+	-1   0    0    -1  
 $EndComp
 $Comp
 L Device:L_Core_Iron_Small L2/701
@@ -1044,7 +1044,7 @@ U 1 1 5F3077B2
 P 10600 3625
 F 0 "J701" H 10680 3667 50  0000 L CNN
 F 1 "Driver_INEP" H 10680 3576 50  0000 L CNN
-F 2 "KicadZeniteSolarLibrary18:Driver_(INEP)" H 10600 3625 50  0001 C CNN
+F 2 "KicadZeniteSolarLibrary18:Driver_(INEP)_SMD" H 10600 3625 50  0001 C CNN
 F 3 "~" H 10600 3625 50  0001 C CNN
 	1    10600 3625
 	1    0    0    -1  
@@ -1283,7 +1283,7 @@ U 1 1 5F3F9945
 P 4050 3950
 F 0 "Rshunt701" H 4120 3996 50  0000 L CNN
 F 1 "1500uR" H 4120 3905 50  0000 L CNN
-F 2 "Resistor_SMD:R_2512_6332Metric_Pad1.52x3.35mm_HandSolder" V 3980 3950 50  0001 C CNN
+F 2 "KicadZeniteSolarLibrary18:PML100HZPJV0L5" V 3980 3950 50  0001 C CNN
 F 3 "~" H 4050 3950 50  0001 C CNN
 	1    4050 3950
 	1    0    0    1   

@@ -737,7 +737,7 @@ U 1 1 5F5877A3
 P 2600 2100
 F 0 "J102" H 2518 3217 50  0000 C CNN
 F 1 "Conn_01x20" H 2518 3126 50  0000 C CNN
-F 2 "Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical" H 2600 2100 50  0001 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical_SMD_Pin1Left" H 2600 2100 50  0001 C CNN
 F 3 "~" H 2600 2100 50  0001 C CNN
 	1    2600 2100
 	-1   0    0    -1  
