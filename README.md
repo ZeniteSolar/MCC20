@@ -8,9 +8,9 @@ Equipe Zênite Solar
 Este módulo é responsável por gerenciar o carregamento da bateria e a operação do painel no seu ponto de maxima potencia 
 
 #### Requisitos e Abordagens
-1. Encontrar o ponto de maxima potencia (MPP) do painel solar
+1. [Encontrar o ponto de maxima potencia (MPP) do painel solar](#codigo)
     - Utilizar a tecnica perturbar e observar (p&o) para achar o MPP
-    - Ao iniciar barrer o duty cicle para iniciar no MPP
+    - Ao iniciar varrer o duty cicle para iniciar no MPP
     - Se a potencia for 0 fazer o barrido novamente 
 2. Medir a Potencia do painel
     - Usar um ina826 para medir a tensao do painel
@@ -27,7 +27,7 @@ Este módulo é responsável por gerenciar o carregamento da bateria e a operaç
         - Utilizar chaves com baixa Rdson e rapidas
         - Utilizar conversor sincrono (não implementado)
     - Frequencia
-        - Utilizar frequencia que tenha uma boa relação entre perdas nas chaves e volume do onversor
+        - Utilizar frequencia que tenha uma boa relação entre perdas nas chaves e volume do conversor
     - Layout
         - Baixa indutancia no braço (entre chaves)
         - Trilhas curtas
@@ -44,4 +44,13 @@ Este módulo é responsável por gerenciar o carregamento da bateria e a operaç
         - Projetar assumindo que a temperatura ambiente é 50°
     - Layout simples de montar por metodo artesanal (transferencia termica)
 
+
+     
+
+
+<a name="codigo"></a>
+```
+testee
+```
+     
      
