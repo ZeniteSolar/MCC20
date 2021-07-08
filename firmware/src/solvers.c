@@ -41,3 +41,41 @@ int bisect_solver(double *x, const double *params[],
 
   return -1;
 }
+
+int regula_falsi_solver(double *x, const double *params[],
+                  double (*fun)(double x, const double *params[]), double xmin,
+                  double xmax, double tol, unsigned int maxiter) {
+    double fx;
+    int side = 0;
+    double e = 0;
+
+	/* starting values at endpoints of interval */
+	double fmin = fun(xmin, params);
+	double fmax = fun(xmax, params);
+
+	int itr = 0;
+    do {
+		*x = ((fmin * xmax) - (fmax * xmin)) / (fmin - fmax);
+		if (fabs(xmax - xmin) < e * fabs(xmin + xmax))
+            break;
+		fx = fun(*x, params);
+
+		if (fx * fmax > 0) {
+			/* fx and fmax have same sign, copy r to t */
+			xmax = *x; 
+            fmax = fx;
+			if (side == -1) fmin /= 2;
+			side = -1;
+		} else if (fmin * fx > 0) {
+			/* fx and fmin have same sign, copy r to s */
+			xmin = *x; 
+            fmin = fx;
+			if (side == +1) fmax /= 2;
+			side = +1;
+		} else {
+			/* fx * f_ very small (looks like zero) */
+			break;
+		} 
+	} while (itr++ < maxiter);
+    return 0;
+}
